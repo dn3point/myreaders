@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import Book from './Book';
 import * as BooksAPI from './BooksAPI';
 import { Link } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
+import Toolbar from '@material-ui/core/Toolbar';
+import AppBar from '@material-ui/core/AppBar';
+import {ArrowBack} from '@material-ui/icons';
+import InputBase from '@material-ui/core/InputBase';
 
 class Search extends Component {
   state = {
@@ -42,10 +47,25 @@ class Search extends Component {
   render() {
     return (
       <div>
-        <Link to="/">Back</Link>
-        <input type="text" value={this.state.query} onChange={this.searchBooks} />
+        <AppBar position="sticky" color="transparent">
+          <Toolbar>
+            <Link to="/" color="primary">
+              <ArrowBack />
+            </Link>
+            <InputBase
+              placeholder="Search…"
+              onChange={this.searchBooks}
+              value={this.state.query}
+            />
+          </Toolbar>
+        </AppBar>
+        <Grid container spacing={3}>
         { this.state.books && this.state.books.map(book =>
-          <Book key={book.id} book={book} />) }
+          <Grid item xs={3} key={book.id}>
+            <Book key={book.id} book={book} />
+          </Grid>
+        )}
+        </Grid>
       </div>
     );
   }

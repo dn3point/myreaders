@@ -9,3 +9,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.title {
+  padding: 10px 0;
+  text-align: center;
+}
+
+.shelf-name {
+  padding: 10px 0;
+}
+
+.book {
+  padding: 10px;
+  width: 200px;
+}
+
+.book-cover {
+  width: 200px;
+}
+
+.fab {
+  position: absolute!important;
+  padding: 20px;
+}

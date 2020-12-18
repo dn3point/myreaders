@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import * as BooksAPI from './BooksAPI';
 import Header from './Header';
 import Content from './Content';
-import {Link} from 'react-router-dom';
-import {NONE, SHELVES} from './Constants';
+import { NONE, SHELVES } from './Constants';
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
 
 class ListBooks extends Component {
   state = {
@@ -30,11 +31,12 @@ class ListBooks extends Component {
 
   render() {
     return (
-      <div className="App">
+      <Box>
         <Header title="MyReaders"/>
-        <Content bookShelves={this.state.shelves} onBookUpdate={this.onBookUpdate} />
-        <Link to="/search">Add a book</Link>
-      </div>
+        <Container fixed>
+          <Content bookShelves={this.state.shelves} onBookUpdate={this.onBookUpdate} />
+        </Container>
+      </Box>
     );
   }
 }

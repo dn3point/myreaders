@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BookShelf from './Shelf';
+import BookShelf from './BookShelf';
+import Box from '@material-ui/core/Box';
 
 const Content = (props) => {
   return (
-    <div>
+    <Box>
       {props.bookShelves && Object.values(props.bookShelves).map(shelf => (
         <BookShelf key={shelf[0]} shelfName={shelf[1]} books={shelf[2]} onBookUpdate={props.onBookUpdate} />
       ))}
-    </div>
+    </Box>
   );
 }
 
