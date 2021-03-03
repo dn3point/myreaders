@@ -5,6 +5,7 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
+import NoMatchPage from './NoMatchPage'
 import Search from './Search';
 
 class App extends Component {
@@ -18,6 +19,9 @@ class App extends Component {
           </Route>
           <Route path="/search">
             <Search />
+          </Route>
+          <Route>
+            <NoMatchPage />
           </Route>
         </Switch>
       </Router>

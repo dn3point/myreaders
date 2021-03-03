@@ -1,3 +1,4 @@
+import Box from '@material-ui/core/Box'
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -9,7 +10,7 @@ import {Search} from '@material-ui/icons';
 const Header = (props) => {
   return (
     <AppBar position="sticky" color="transparent">
-      <Toolbar>
+      <Toolbar style={{display: 'flex', justifyContent:'space-between'}}>
         <Typography variant="h4" className="title">
           {props.title}
         </Typography>

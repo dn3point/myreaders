@@ -22,25 +22,31 @@ class Search extends Component {
       });
     });
   }
-
+  
+  doSearch = (query) => {
+    BooksAPI.search(query.trim()).then((books) => {
+      if (books.error) {
+        books = [];
+      }
+      books = books.map(book => {
+        const sameBook = this.state.myBooks.filter(myBook => myBook.id === book.id);
+        return sameBook && sameBook.length > 0 ? sameBook[0] : book;
+      });
+      this.setState({
+        books,
+      });
+    });
+  }
+  
   searchBooks = (event) => {
-    const query = event.target.value.trim();
+    const query = event.target.value;
     this.setState({
       query,
     });
     if (query && query.length > 0) {
-      BooksAPI.search(query).then((books) => {
-        if (books.error) {
-          books = [];
-        }
-        books = books.map(book => {
-          const sameBook = this.state.myBooks.filter(myBook => myBook.id === book.id);
-          return sameBook && sameBook.length > 0 ? sameBook[0] : book;
-        });
-        this.setState({
-          books,
-        });
-      });
+      this.doSearch(query);
+    } else {
+      this.setState({books:[]})
     }
   };
 

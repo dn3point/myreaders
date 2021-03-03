@@ -61,7 +61,7 @@ class Book extends Component {
               value={this.state.shelf}
               onChange={this.onBookShelfChange}
             >
-              {Object.keys(SHELVES).filter(key => this.state.shelf === NONE || key !== NONE).map(key => (
+              {Object.keys(SHELVES).map(key => (
                 <FormControlLabel value={key} key={`${key}_input_${id}`} control={<Radio />} label={SHELVES[key]} />
               ))}
             </RadioGroup>
